@@ -43,6 +43,8 @@ pipeline{
 		stage('upload artifact to nexus'){
 	   		steps{
 	     			script{
+						def readPomVersion = readMavenPom file: 'pom.xml'
+						def nexusRepo = readPomVersion.version.endWith("SNAPSHOT")? "dempapp-snapshot" : "demoapp-release"
 	       				nexusArtifactUploader artifacts: 
 	       				[
 	        				[
@@ -57,8 +59,8 @@ pipeline{
 		   			nexusUrl: '44.201.13.127:8081/', 
 		   			nexusVersion: 'nexus3', 
 		   			protocol: 'http', 
-		   			repository: 'demoapp-release', 
-		   			version: '1.0.0'
+		   			repository: nexusRepo, 
+		   			version: "${readPomVersion.version}"
 	     		}
 	  		}
        	}
