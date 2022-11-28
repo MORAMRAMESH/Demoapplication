@@ -6,10 +6,10 @@ pipeline{
 	stages{
 		stage('git checkout'){
 	   		steps{
-             			git branch: 'main', url: 'https://github.com/MORAMRAMESH/Demoapplication.git'
+             		git branch: 'main', url: 'https://github.com/MORAMRAMESH/Demoapplication.git'
 			}
 		}
-        	stage('Unit testing'){
+        stage('Unit testing'){
         		steps{
 	      			sh 'mvn test'
 	   		}   
@@ -54,13 +54,13 @@ pipeline{
 	       				], 
 	           			credentialsId: 'nexus-auth', 
 		   			groupId: 'com.example', 
-		   			nexusUrl: '3.238.0.150:8081', 
+		   			nexusUrl: '44.201.13.127:8081/', 
 		   			nexusVersion: 'nexus3', 
 		   			protocol: 'http', 
 		   			repository: 'demoapp-release', 
 		   			version: '1.0.0'
-	     			}
+	     		}
 	  		}
-       		}
+       	}
    	}
 }
