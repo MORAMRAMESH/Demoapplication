@@ -76,7 +76,7 @@ pipeline{
 		stage('Docker image push to DockerHub'){
 			steps{
 				script{
-					withCredentials([string(credentialsId: 'Hub-cred', variable: 'Hub-cred')]){
+					withCredentials([string(credentialsId: 'Hub-cred', variable: 'Hub-cred')]) {
 						sh 'docker login -u moramramesh -p $(Hub-cred)'
 						sh 'docker image push moramramesh/$JOB_NAME:v1.$BUILD_ID'
 						sh 'docker image push moramramesh/$JOB_NAME:v1.latest'
