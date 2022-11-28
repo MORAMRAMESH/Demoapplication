@@ -1,8 +1,8 @@
 pipeline{
-   agent any
-   tools {
+   	agent any
+   	tools{
         maven 'Maven3'
-   }
+   	}
 	stages{
 		stage('git checkout'){
 	   		steps{
@@ -61,6 +61,6 @@ pipeline{
 		   			version: '1.0.0'
 	     		}
 	  		}
-       }
-   }
+       	}
+   	}
 }
